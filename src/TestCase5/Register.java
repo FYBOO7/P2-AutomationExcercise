@@ -1,4 +1,4 @@
-package TestCase4;
+package TestCase5;
 
 import java.time.Duration;
 
@@ -10,7 +10,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class Logout {
+public class Register {
+
 	WebDriver driver;
 	@BeforeTest
 	public void initilize() 
@@ -23,29 +24,26 @@ public class Logout {
 	}
 	
 	@Test
-	public void Valid() {
+	public void info() {
 		
 		String title =driver.getTitle();
 		String expectedTitle= "Automation Exercise";
 		Assert.assertEquals(title, expectedTitle, "Page title doesn't match the expected title");
 		
 		driver.findElement(By.xpath("//li//a[text()=\" Signup / Login\"]")).click();
-		String headingLogin= driver.findElement(By.xpath("//div[@class=\"login-form\"]//h2")).getText();
-		String expectedLoginTitle= "Login to your account";
+		String headingLogin= driver.findElement(By.xpath("//div[@class=\"signup-form\"]//h2")).getText();
+		String expectedLoginTitle= "New User Signup!";
 		Assert.assertEquals(headingLogin, expectedLoginTitle, "Page title doesn't match the expected title");
 		
-		driver.findElement(By.xpath("//form//input[@data-qa=\"login-email\"]")).sendKeys("fbijapure.fb@gmail.com");
-		driver.findElement(By.xpath("//form//input[@data-qa=\"login-password\"]")).sendKeys("Bijapurefb");
-		driver.findElement(By.xpath("//form//button[@data-qa=\"login-button\"]")).click();
+		driver.findElement(By.name("name")).sendKeys("Farhan");
+		driver.findElement(By.xpath("//form//input[@data-qa=\"signup-email\"]")).sendKeys("fbijapure.fb@gmail.com");
+		driver.findElement(By.xpath("//form//button[@data-qa=\"signup-button\"]")).click();
 		
-		String user =driver.findElement(By.xpath("//li//a[text()=\" Logged in as \"]")).getText();
-		String expectedUserTitle= "Logged in as Farhan Biajpure";
-		Assert.assertEquals(user, expectedUserTitle, "Page title doesn't match the expected title");
-		
-		driver.findElement(By.xpath("//li//a[@href=\"/logout\"]")).click();
-		Assert.assertEquals(headingLogin, expectedLoginTitle, "Page title doesn't match the expected title");
+		String Warning=driver.findElement(By.xpath("//form//p")).getText();
+		//System.out.println(Warning);
+		String expectedWarning= "Email Address already exist!";
+		Assert.assertEquals(Warning, expectedWarning, "Page title doesn't match the expected title");
 	}
-	
 	
 	@AfterTest
 	public void close() {

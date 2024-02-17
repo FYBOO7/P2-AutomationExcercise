@@ -1,4 +1,4 @@
-package TestCase3;
+package TestCase04;
 
 import java.time.Duration;
 
@@ -10,7 +10,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class InvalidLogin {
+public class Logout {
 	WebDriver driver;
 	@BeforeTest
 	public void initilize() 
@@ -23,7 +23,7 @@ public class InvalidLogin {
 	}
 	
 	@Test
-	public void Invalid() {
+	public void Valid() {
 		
 		String title =driver.getTitle();
 		String expectedTitle= "Automation Exercise";
@@ -38,11 +38,14 @@ public class InvalidLogin {
 		driver.findElement(By.xpath("//form//input[@data-qa=\"login-password\"]")).sendKeys("Bijapurefb");
 		driver.findElement(By.xpath("//form//button[@data-qa=\"login-button\"]")).click();
 		
-		String Warning=driver.findElement(By.xpath("//form//p")).getText();
-		//System.out.println(Warning);
-		String expectedWarning= "Your email or password is incorrect!";
-		Assert.assertEquals(Warning, expectedWarning, "Page title doesn't match the expected title");
+		String user =driver.findElement(By.xpath("//li//a[text()=\" Logged in as \"]")).getText();
+		String expectedUserTitle= "Logged in as Farhan Biajpure";
+		Assert.assertEquals(user, expectedUserTitle, "Page title doesn't match the expected title");
+		
+		driver.findElement(By.xpath("//li//a[@href=\"/logout\"]")).click();
+		Assert.assertEquals(headingLogin, expectedLoginTitle, "Page title doesn't match the expected title");
 	}
+	
 	
 	@AfterTest
 	public void close() {

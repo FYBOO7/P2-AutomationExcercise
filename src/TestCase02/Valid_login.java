@@ -1,4 +1,4 @@
-package TestCase4;
+package TestCase02;
 
 import java.time.Duration;
 
@@ -10,7 +10,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class Logout {
+public class Valid_login {
 	WebDriver driver;
 	@BeforeTest
 	public void initilize() 
@@ -41,11 +41,18 @@ public class Logout {
 		String user =driver.findElement(By.xpath("//li//a[text()=\" Logged in as \"]")).getText();
 		String expectedUserTitle= "Logged in as Farhan Biajpure";
 		Assert.assertEquals(user, expectedUserTitle, "Page title doesn't match the expected title");
-		
-		driver.findElement(By.xpath("//li//a[@href=\"/logout\"]")).click();
-		Assert.assertEquals(headingLogin, expectedLoginTitle, "Page title doesn't match the expected title");
 	}
 	
+	@Test(dependsOnMethods = "Valid")
+	public void deleteAccount() {
+		
+		driver.findElement(By.xpath("//li//a[text()=\" Delete Account\"]")).click();
+		String h2=driver.findElement(By.tagName("h2")).getText();
+		String expectedh2="ACCOUNT DELETED!";
+		Assert.assertEquals(h2, expectedh2, "Page title doesn't match the expected title");
+		
+		driver.findElement(By.xpath("//div//a[@data-qa=\"continue-button\"]")).click();
+	}
 	
 	@AfterTest
 	public void close() {

@@ -1,4 +1,4 @@
-package TestCase1;
+package TestCase01;
 
 import java.io.File;
 import java.time.Duration;

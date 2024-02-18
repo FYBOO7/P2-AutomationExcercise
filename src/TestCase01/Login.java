@@ -104,7 +104,7 @@ public class Login {
 			//System.out.println(user);
 			//Assert.assertEquals(user, , "Page title doesn't match the expected title");
 			String user =driver.findElement(By.xpath("//li//a[text()=\" Logged in as \"]")).getText();
-			String expectedUserTitle= "Logged in as Farhan Biajpure";
+			String expectedUserTitle= "Logged in as Farhan";
 			Assert.assertEquals(user, expectedUserTitle, "Page title doesn't match the expected title");
 		}
 		

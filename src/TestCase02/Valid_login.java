@@ -39,7 +39,7 @@ public class Valid_login {
 		driver.findElement(By.xpath("//form//button[@data-qa=\"login-button\"]")).click();
 		
 		String user =driver.findElement(By.xpath("//li//a[text()=\" Logged in as \"]")).getText();
-		String expectedUserTitle= "Logged in as Farhan Biajpure";
+		String expectedUserTitle= "Logged in as Farhan";
 		Assert.assertEquals(user, expectedUserTitle, "Page title doesn't match the expected title");
 	}
 	

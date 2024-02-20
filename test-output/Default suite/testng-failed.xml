@@ -3,17 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCase16.loginplaceOrder">
+      <class name="TestCase26.scrollUp">
         <methods>
-          <include name="initilize"/>
-          <include name="Valid"/>
-          <include name="payment"/>
-          <include name="checkout"/>
           <include name="close"/>
-          <include name="deleteAccount"/>
-          <include name="AddtoCart"/>
+          <include name="Sub"/>
+          <include name="homePage"/>
+          <include name="initilize"/>
         </methods>
-      </class> <!-- TestCase16.loginplaceOrder -->
+      </class> <!-- TestCase26.scrollUp -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -111,6 +111,6 @@ public class addToCart {
 	
 	@AfterTest
 	public void close() {
-		//driver.close();
+		driver.close();
 	}
 }

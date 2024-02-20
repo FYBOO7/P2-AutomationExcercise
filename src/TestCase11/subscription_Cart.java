@@ -38,6 +38,10 @@ public class subscription_Cart {
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight - 200)");
+		
+		String title =driver.findElement(By.xpath("//footer[@id=\"footer\"]//h2")).getText();
+		String expectedTitle= "SUBSCRIPTION";
+		Assert.assertEquals(title, expectedTitle, "Page title doesn't match the expected title");
         
         driver.findElement(By.id("susbscribe_email")).sendKeys("fbijapure.fb@gmail.com");
         

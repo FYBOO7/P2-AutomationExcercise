@@ -21,7 +21,9 @@ public class ProductPage {
 	@BeforeTest
 	public void initilize() 
 	{
-		driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addExtensions(new File("C:\\Users\\Farhan\\Desktop\\Selenium\\abp.crx")); 
+		driver = new ChromeDriver(options);;
 		
 		driver.manage().window().maximize();
 		driver.get("https://automationexercise.com/");
